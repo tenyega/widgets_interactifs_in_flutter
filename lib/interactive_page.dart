@@ -11,7 +11,7 @@ class InteractivePageState extends State<InteractivePage> {
   Color _color = Colors.amber;
   String _textInput = "default text";
   bool _switchValue = false;
-  double _sliderValue = 0;
+  double _sliderValue = 10;
   bool _checked = false;
   int _groupValue = 0;
   // Action when the button is clicked
