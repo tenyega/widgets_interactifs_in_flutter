@@ -13,7 +13,8 @@ class InteractivePageState extends State<InteractivePage> {
   bool _switchValue = false;
   double _sliderValue = 10;
   bool _checked = false;
-  int _groupValue = 0;
+  dynamic _groupValue = 1;
+  dynamic _groupValue2 = 3;
   // Action when the button is clicked
   void changeColor() {
     setState(() {
@@ -103,8 +104,10 @@ class InteractivePageState extends State<InteractivePage> {
               _checked = value ?? false;
             });
           },
+          splashRadius: 20, //round circle when hovered.
         ),
         radios(),
+        radios2(),
       ])
           // Center the rectangle in the body
 
@@ -116,12 +119,35 @@ class InteractivePageState extends State<InteractivePage> {
     );
   }
 
+// Radio buttons are always in the grouped form.
   Row radios() {
     List<Widget> radios = [];
-    for (var i = 0; i < 5; i++) {
+    for (var i = 1; i < 6; i++) {
       Radio r = Radio(
         value: i,
-        groupValue: _groupValue,
+        groupValue:
+            _groupValue, // the group value of the radio button needs a dynamic value
+        onChanged: (value) {
+          setState(() {
+            _groupValue = value as int;
+            _textInput = "Valeur des radios : $_groupValue";
+          });
+        },
+      );
+      radios.add(r);
+    }
+    return Row(
+      children: radios,
+    );
+  }
+
+  Row radios2() {
+    List<Widget> radios = [];
+    for (var i = 1; i < 6; i++) {
+      Radio r = Radio(
+        value: i,
+        groupValue:
+            _groupValue2, // the group value of the radio button needs a dynamic value
         onChanged: (value) {
           setState(() {
             _groupValue = value as int;
