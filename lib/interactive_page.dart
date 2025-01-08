@@ -107,7 +107,6 @@ class InteractivePageState extends State<InteractivePage> {
           splashRadius: 20, //round circle when hovered.
         ),
         radios(),
-        radios2(),
       ])
           // Center the rectangle in the body
 
@@ -127,27 +126,6 @@ class InteractivePageState extends State<InteractivePage> {
         value: i,
         groupValue:
             _groupValue, // the group value of the radio button needs a dynamic value
-        onChanged: (value) {
-          setState(() {
-            _groupValue = value as int;
-            _textInput = "Valeur des radios : $_groupValue";
-          });
-        },
-      );
-      radios.add(r);
-    }
-    return Row(
-      children: radios,
-    );
-  }
-
-  Row radios2() {
-    List<Widget> radios = [];
-    for (var i = 1; i < 6; i++) {
-      Radio r = Radio(
-        value: i,
-        groupValue:
-            _groupValue2, // the group value of the radio button needs a dynamic value
         onChanged: (value) {
           setState(() {
             _groupValue = value as int;
