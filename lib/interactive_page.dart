@@ -35,7 +35,7 @@ class InteractivePageState extends State<InteractivePage> {
       appBar: AppBar(
         title: Center(
           child: Text(
-            "Interactive Page",
+            "Interactive Page ",
             style: TextStyle(color: Colors.white),
           ),
         ),
@@ -43,18 +43,21 @@ class InteractivePageState extends State<InteractivePage> {
       ),
       body: Center(
           child: Column(children: [
-        Container(
-          height: 100,
-          width: 100,
-          decoration: BoxDecoration(
-            color: _color, // Dynamically set the color using _color
-            borderRadius: BorderRadius.all(Radius.circular(20.0)),
-          ),
-          child: Center(
-            child: Text(
-              "Change My Color",
-              style: TextStyle(color: Colors.white, fontSize: 22),
-              textAlign: TextAlign.center,
+        Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Container(
+            height: 100,
+            width: 100,
+            decoration: BoxDecoration(
+              color: _color, // Dynamically set the color using _color
+              borderRadius: BorderRadius.all(Radius.circular(20.0)),
+            ),
+            child: Center(
+              child: Text(
+                "Dolma",
+                style: TextStyle(color: Colors.white, fontSize: 22),
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         ),
@@ -107,6 +110,7 @@ class InteractivePageState extends State<InteractivePage> {
           splashRadius: 20, //round circle when hovered.
         ),
         radios(),
+        radios2(),
       ])
           // Center the rectangle in the body
 
@@ -130,6 +134,27 @@ class InteractivePageState extends State<InteractivePage> {
           setState(() {
             _groupValue = value as int;
             _textInput = "Valeur des radios : $_groupValue";
+          });
+        },
+      );
+      radios.add(r);
+    }
+    return Row(
+      children: radios,
+    );
+  }
+
+  Row radios2() {
+    List<Widget> radios = [];
+    for (var i = 1; i < 6; i++) {
+      Radio r = Radio(
+        value: i,
+        groupValue:
+            _groupValue2, // the group value of the radio button needs a dynamic value
+        onChanged: (value) {
+          setState(() {
+            _groupValue2 = value as int;
+            _textInput = "Valeur des radios : $_groupValue2";
           });
         },
       );
